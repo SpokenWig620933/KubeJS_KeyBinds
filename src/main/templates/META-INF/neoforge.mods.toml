@@ -1,13 +1,13 @@
 modLoader="javafml" # Mandatory
 loaderVersion="${loader_version_range}" # Mandatory
 license="${mod_license}" # Mandatory
-#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" # Optional
+issueTrackerURL="https://github.com/SpokenWig620933/KubeJS_Keybinds/issues" # Optional
 
 [[mods]] # Mandatory
 modId="${mod_id}" # Mandatory
 version="${mod_version}" # Mandatory
 displayName="${mod_name}" # Mandatory
-#updateJSONURL="https://change.me.example.invalid/updates.json" # Optional - A URL to query for updates for this mod. See the JSON update specification https://docs.neoforged.net/docs/misc/updatechecker/
+updateJSONURL="https://raw.githubusercontent.com/SpokenWig620933/KubeJS_Keybinds/master/update.json" # Optional - A URL to query for updates for this mod. See the JSON update specification https://docs.neoforged.net/docs/misc/updatechecker/
 displayURL="https://www.curseforge.com/minecraft/mc-mods/kubejs-keybinds" # Optional
 logoFile="KubeJS_Keybinds-logo.png" # Optional
 credits="${mod_credits}" # Optional
