@@ -1,0 +1,1 @@
+net.aura_development.kubejs_keybinds.kubejs.KeyBindsPlugin client
