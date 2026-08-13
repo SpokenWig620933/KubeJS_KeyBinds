@@ -9,7 +9,7 @@ version="${mod_version}" # Mandatory
 displayName="${mod_name}" # Mandatory
 updateJSONURL="https://raw.githubusercontent.com/SpokenWig620933/KubeJS_Keybinds/master/update.json" # Optional - A URL to query for updates for this mod. See the JSON update specification https://docs.neoforged.net/docs/misc/updatechecker/
 displayURL="https://www.curseforge.com/minecraft/mc-mods/kubejs-keybinds" # Optional
-logoFile="KubeJS_Keybinds-logo.png" # Optional
+logoFile= "kubejs_keybinds-logo.png" # Optional
 credits="${mod_credits}" # Optional
 authors="${mod_authors}" # Mandatory
 
