@@ -13,6 +13,11 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class KeyBindWrapper {
     
+    @Info("Gets whether Options already exists")
+    public static boolean isOptionsSaved() {
+        return Minecraft.getInstance().options.getFile().exists();
+    }
+    
     @NotNull
     @Info("Gets a list of all KeyMappings")
     public static List<KeyMapping> getKeyMappings() {

@@ -40,10 +40,18 @@ public class KeybindModificationEvent implements ClientKubeEvent {
         KeyMapping keyMapping = KeyBindWrapper.getKeyMapping(name);
         
         if(keyMapping != null) {
-            keyMapping.setKeyModifierAndCode(KeyModifier.NONE, InputConstants.UNKNOWN);
-            
-            ClientEvents.HIDE_KEYBINDS.add(keyMapping);
+            ClientEvents.removeKey(keyMapping);
         }  else {
+            ConsoleJS.CLIENT.warn("KeyBind \"" + name + "\" not found!");
+        }
+    }
+    
+    public void resetKey(@NotNull String name) {
+        KeyMapping keyMapping = KeyBindWrapper.getKeyMapping(name);
+        
+        if(keyMapping != null) {
+            keyMapping.setKeyModifierAndCode(keyMapping.getDefaultKeyModifier(), keyMapping.getDefaultKey());
+        } else {
             ConsoleJS.CLIENT.warn("KeyBind \"" + name + "\" not found!");
         }
     }
