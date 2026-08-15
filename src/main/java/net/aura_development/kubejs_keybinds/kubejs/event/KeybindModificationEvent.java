@@ -7,9 +7,13 @@ import dev.latvian.mods.kubejs.script.ConsoleJS;
 import net.aura_development.kubejs_keybinds.event.ClientEvents;
 import net.aura_development.kubejs_keybinds.kubejs.wrapper.KeyBindWrapper;
 import net.minecraft.client.KeyMapping;
+import net.neoforged.neoforge.client.settings.IKeyConflictContext;
 import net.neoforged.neoforge.client.settings.KeyModifier;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class KeybindModificationEvent implements ClientKubeEvent {
     
@@ -77,6 +81,7 @@ public class KeybindModificationEvent implements ClientKubeEvent {
         if(keyMapping != null) {
             keyMapping.defaultKey = inputType.getOrCreate(GLFWInputWrapper.get(key.toUpperCase()));
             keyMapping.keyModifierDefault = KeyModifier.valueFromString(modifier);
+            keyMapping.setKeyModifierAndCode(keyMapping.getDefaultKeyModifier(), keyMapping.getDefaultKey());
         } else {
             ConsoleJS.CLIENT.warn("KeyBind \"" + name + "\" not found!");
         }
@@ -94,6 +99,63 @@ public class KeybindModificationEvent implements ClientKubeEvent {
             keyMapping.setKeyModifierAndCode(KeyModifier.valueFromString(modifier), inputType.getOrCreate(GLFWInputWrapper.get(key.toUpperCase())));
         } else {
             ConsoleJS.CLIENT.warn("KeyBind \"" + name + "\" not found!");
+        }
+    }
+    
+    @Nullable
+    public IKeyConflictContext getKeyConflictContext(@NotNull String name) {
+        KeyMapping keyMapping = KeyBindWrapper.getKeyMapping(name);
+        
+        if(keyMapping != null) {
+            return keyMapping.getKeyConflictContext();
+        } else {
+            ConsoleJS.CLIENT.warn("KeyBind \"" + name + "\" not found!");
+        }
+        
+        return null;
+    }
+    
+    public void setKeyConflictContext(@NotNull String name, @NotNull IKeyConflictContext conflictContext) {
+        KeyMapping keyMapping = KeyBindWrapper.getKeyMapping(name);
+        
+        if(keyMapping != null) {
+            keyMapping.setKeyConflictContext(conflictContext);
+        } else {
+            ConsoleJS.CLIENT.warn("KeyBind \"" + name + "\" not found!");
+        }
+    }
+    
+    public KeyConflictContextBuilder getKeyConflictContextBuilder() {
+        return new KeyConflictContextBuilder();
+    }
+    
+    public static class KeyConflictContextBuilder {
+        
+        public Supplier<Boolean> isActive = () -> true;
+        public Function<IKeyConflictContext, Boolean> conflicts = keyConflictContext -> true;
+        
+        public void setActive(@NotNull Supplier<Boolean> isActive) {
+            this.isActive = isActive;
+        }
+        
+        public void setConflicts(@NotNull Function<IKeyConflictContext, Boolean> conflicts) {
+            this.conflicts = conflicts;
+        }
+        
+        @NotNull
+        public IKeyConflictContext build() {
+            return new IKeyConflictContext() {
+                
+                @Override
+                public boolean isActive() {
+                    return isActive.get();
+                }
+                
+                @Override
+                public boolean conflicts(@NotNull IKeyConflictContext keyConflictContext) {
+                    return conflicts.apply(keyConflictContext);
+                }
+            };
         }
     }
 }

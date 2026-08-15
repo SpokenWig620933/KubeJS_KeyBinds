@@ -49,6 +49,8 @@ public class ClientEvents {
             Minecraft.getInstance().options.keyMappings = keyMappings.toArray(new KeyMapping[0]);
         }
         
+        KeyMapping.resetMapping();
+        
         List<Map.Entry<String, Integer>> categorySortOrder = new ArrayList<>(KeyMapping.CATEGORY_SORT_ORDER.entrySet());
         categorySortOrder.sort(Map.Entry.comparingByValue());
         
@@ -62,12 +64,6 @@ public class ClientEvents {
         
         for(int i = 0; i < CATEGORY_SORT_ORDER.size(); i++) {
             KeyMapping.CATEGORY_SORT_ORDER.put(CATEGORY_SORT_ORDER.get(i), i + 1);
-        }
-        
-        if(!Minecraft.getInstance().options.getFile().exists()) {
-            for(KeyMapping keyMapping : KeyMapping.ALL.values()) {
-                keyMapping.setKeyModifierAndCode(keyMapping.getDefaultKeyModifier(), keyMapping.getDefaultKey());
-            }
         }
     }
 }
