@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-public class KeybindModificationEvent implements ClientKubeEvent {
+public class KeyBindModificationEvent implements ClientKubeEvent {
     
     @Nullable
     public KeyMapping getKeyMapping(@NotNull String name) {

@@ -3,8 +3,8 @@ package net.aura_development.kubejs_keybinds.event;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.aura_development.kubejs_keybinds.KubeJSKeyBinds;
 import net.aura_development.kubejs_keybinds.kubejs.event.KeyBindCategoriesEvent;
-import net.aura_development.kubejs_keybinds.kubejs.event.KeybindExtendedEvents;
-import net.aura_development.kubejs_keybinds.kubejs.event.KeybindModificationEvent;
+import net.aura_development.kubejs_keybinds.kubejs.event.KeyBindExtendedEvents;
+import net.aura_development.kubejs_keybinds.kubejs.event.KeyBindModificationEvent;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
@@ -35,7 +35,7 @@ public class ClientEvents {
     
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onLoadComplete(@NotNull FMLLoadCompleteEvent event) {
-        KeybindExtendedEvents.MODIFICATION.post(new KeybindModificationEvent());
+        KeyBindExtendedEvents.MODIFICATION.post(new KeyBindModificationEvent());
         
         List<KeyMapping> keyMappings = new ArrayList<>();
         
@@ -58,7 +58,7 @@ public class ClientEvents {
             CATEGORY_SORT_ORDER.add(category.getKey());
         }
         
-        KeybindExtendedEvents.CATEGORIES.post(new KeyBindCategoriesEvent());
+        KeyBindExtendedEvents.CATEGORIES.post(new KeyBindCategoriesEvent());
         
         KeyMapping.CATEGORY_SORT_ORDER.clear();
         
