@@ -1,0 +1,12 @@
+{
+	  "homepage": "https://www.curseforge.com/minecraft/mc-mods/kubejs-keybinds",
+	  "promos": {
+	  	  "1.21.1-latest": "1.0.3",
+          "1.21.1-recommended": "1.0.3"
+	  },
+	  "1.21.1": {
+		  "1.0.0": "Initial version",
+          "1.0.1": "Initial Startup Fixes & new additions",
+          "1.0.2": "Initial Startup Fixes & new additions"
+	  }
+}

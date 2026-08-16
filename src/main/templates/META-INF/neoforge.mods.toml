@@ -1,21 +1,21 @@
 modLoader="javafml" # Mandatory
-loaderVersion="${loader_version_range}" # Mandatory
+loaderVersion="[1,)" # Mandatory
 license="${mod_license}" # Mandatory
-issueTrackerURL="https://github.com/SpokenWig620933/KubeJS_Keybinds/issues" # Optional
+issueTrackerURL="${mod_issues}" # Optional
 
 [[mods]] # Mandatory
 modId="${mod_id}" # Mandatory
 version="${mod_version}" # Mandatory
 displayName="${mod_name}" # Mandatory
-updateJSONURL="https://raw.githubusercontent.com/SpokenWig620933/KubeJS_Keybinds/master/update.json" # Optional - A URL to query for updates for this mod. See the JSON update specification https://docs.neoforged.net/docs/misc/updatechecker/
-displayURL="https://www.curseforge.com/minecraft/mc-mods/kubejs-keybinds" # Optional
-logoFile= "kubejs_keybinds-logo.png" # Optional
-credits="${mod_credits}" # Optional
-authors="${mod_authors}" # Mandatory
+updateJSONURL="${mod_update_neoforge}" # Optional - https://docs.neoforged.net/docs/misc/updatechecker/
+displayURL="${mod_homepage}" # Optional
+logoFile= "${mod_id}-logo.png" # Optional
+credits="TheSavageWolf32 (Logo)" # Optional
+authors="SpokenWig620933" # Mandatory
 
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-KubeJS extension for KeyBinds
+KubeJS extension for KeyBinds.
 '''
 
 [[accessTransformers]]
@@ -23,14 +23,13 @@ file="META-INF/accesstransformer.cfg"
 
 [[dependencies.${mod_id}]]
     modId="neoforge" # Mandatory
-    type="required" # Mandatory - The type of the dependency. Can be one of "required", "optional", "incompatible" or "discouraged" (case insensitive).
-    # reason="..." # Optional - Field for describing why the dependency is required or why it is incompatible
-    versionRange="[${neo_version},)" # Mandatory
-    # An ordering relationship for the dependency.
+    type="required" # Mandatory - ["required", "optional", "incompatible" or "discouraged"] (case insensitive).
+    # reason="..." # Optional - Why is the dependency required or why it is incompatible.
+    versionRange="[${neoforge_version},)" # Mandatory
     # BEFORE - This mod is loaded BEFORE the dependency
     # AFTER - This mod is loaded AFTER the dependency
     ordering="NONE"
-    side="CLIENT" # Mandatory - Side this dependency is applied on - BOTH, CLIENT, or SERVER
+    side="CLIENT" # Mandatory - [BOTH, CLIENT, SERVER]
 
 [[dependencies.${mod_id}]]
     modId="minecraft"
