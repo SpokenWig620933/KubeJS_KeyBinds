@@ -5,7 +5,7 @@
           "1.21.1-recommended": "1.0.3"
 	  },
 	  "1.21.1": {
-		  "1.0.0": "Initial version",
+		  "1.0.0": "Initial release",
           "1.0.1": "Initial Startup Fixes & new additions",
           "1.0.2": "Initial Startup Fixes & new additions"
 	  }
